@@ -14,8 +14,8 @@ tuple1 = (1,"two",3,"Four") #tuples are immutable
 
 addlist=list1+list2
 
-bool1=True
-bool2=False
+booltype1=True
+booltype2=False
 
 
 dictionary ={"num1": 456,
@@ -30,11 +30,28 @@ set2={34,45,56,34}
 set2.add(90)
 #print(set2)
 
+#list() creates empty list
+#list.insert(index,entry)
 
+#INDEXING 
+#first=addList[0]
+#last=addlist[-1]
 
+#NESTED LIST and indexing
 
+multiList=[["index0FirstElement","index1FirstElement"],["index0SecondElement"]]
 
+#print(multiList[1][0])
 
+#List Slicing
 
+list3=[i for i in range(10)]
+print(list3[1:5])
+print(list3[5:])
 
+#DICTIONARY DETAILS
+#print(dict1.keys())
+#print(dict1.values())
+#dict1.items()#outputs valies as tuples
+#print(length(dict1))
 
