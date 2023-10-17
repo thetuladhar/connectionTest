@@ -62,22 +62,16 @@ def makeCoffee(item):
 while True:
     print("-----COFFEE_PROGRAM-----")
     inventory = InitialInventory
-
-    prompt=input("What would you like? (espresso/latte/cappuccino) :")
-    
+    prompt=input("What would you like? (espresso/latte/cappuccino) :")   
     if prompt == "off":
         print("---Turning off---")
         break
-
     elif prompt=="report":
         report()
-    
     elif prompt=="espresso":
         checkResource(espresso)
-    
     elif prompt=="latte":
          checkResource(latte)
-
     elif prompt=="cappuccino":
         checkResource(cappuccino)
     else:
