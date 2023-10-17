@@ -28,17 +28,12 @@ def coinProgram():
     pennies=int(input("Insert Pennies : "))
     calc = quarters*.25 + dimes*.10 +nickeles*.05 +pennies*.01
     return round(calc,2)
-
-def checkResource(item):
-    if item["Water"]> inventory["Water"]:
-        print("Sorry there is NOT enough Water.")
-        if item["Milk"]> inventory["Milk"]:
-            print("Sorry there is NOT enough Milk.")
-            if item["Coffee"]> inventory["Coffee"]:
-                print("Sorry there is NOT enough Coffee.")
-    else:
-        transaction(item)
     
+def makeCoffee(item):
+   inventory["Water"]=inventory["Water"]-item["Water"]
+   inventory["Milk"]=inventory["Milk"]- item["Milk"]
+   inventory["Coffee"]=inventory["Coffee"] - item["Coffee"]
+   print("Here is your",str(prompt)+". Enjoy!")
 
 def transaction(item):
     insertedCoins=coinProgram()
@@ -52,11 +47,15 @@ def transaction(item):
         if insertedCoins > price:
             print("Here is $"+str(round(insertedCoins-price,2)),"in change.")
 
-def makeCoffee(item):
-   inventory["Water"]=inventory["Water"]-item["Water"]
-   inventory["Milk"]=inventory["Milk"]- item["Milk"]
-   inventory["Coffee"]=inventory["Coffee"] - item["Coffee"]
-   print("Here is your",str(prompt)+". Enjoy!")
+def checkResource(item):
+    if item["Water"]> inventory["Water"]:
+        print("Sorry there is NOT enough Water.")
+        if item["Milk"]> inventory["Milk"]:
+            print("Sorry there is NOT enough Milk.")
+            if item["Coffee"]> inventory["Coffee"]:
+                print("Sorry there is NOT enough Coffee.")
+    else:
+        transaction(item)
 
 
 while True:
