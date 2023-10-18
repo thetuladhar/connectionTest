@@ -1,14 +1,17 @@
 import math
 
 class Circle:
+    #class Variable 
+    Pi = math.pi
     def __init__(self, radius):
+        #instance variable
         self.radius = radius
 
     def calculate_area(self):
-        return math.pi * self.radius ** 2
+        return Pi * self.radius ** 2
 
     def calculate_circumference(self):
-        return 2 * math.pi * self.radius
+        return 2 * Pi * self.radius
 
     def display_properties(self):
         print(f"Circle Radius: {self.radius}")
