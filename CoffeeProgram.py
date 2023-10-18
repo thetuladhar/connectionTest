@@ -30,13 +30,18 @@ def coinProgram():
     return round(calc,2)
 
 def checkResource(item):
+    switch="on"
     if item["Water"]> inventory["Water"]:
         print("Sorry there is NOT enough Water.")
-        if item["Milk"]> inventory["Milk"]:
-            print("Sorry there is NOT enough Milk.")
-            if item["Coffee"]> inventory["Coffee"]:
-                print("Sorry there is NOT enough Coffee.")
-    else:
+        switch="off"
+    if item["Milk"]> inventory["Milk"]:
+        print("Sorry there is NOT enough Milk.")
+        switch="off"
+    if item["Coffee"]> inventory["Coffee"]:
+        print("Sorry there is NOT enough Coffee.")
+        switch="off"
+
+    if switch=="on":
         transaction(item)
     
 
