@@ -43,3 +43,24 @@ totoya=Car(name="Camry")
 muscle.wheels=6
 #print(totoya.wheels)
 
+
+
+
+#object base by default
+class Person(object):
+
+    def __init__(self,name,id):
+        self.name=name
+        self.id=id
+
+    def __del__(self):
+        pass
+
+    def display(self):
+        print(self.name,self.id)
+
+
+person=Person("John","007")
+person.display()
+
+#SUPER METHOD and it should be the last line in the child init method
