@@ -18,23 +18,25 @@ class CityRide(Car):
 class OffRoad(Car):
     def __init__(self,offroading):
         print(offroading,"Type is Off Roader")
-        super().__init__(offroading,seats=2)
-        
+        super().__init__(offroading,seats=6)
+
 class SUV(CityRide,OffRoad):
     def __init__(self):
         print("Vehicle is a SUV")
         super().__init__('RangeRover')
 
 class Bus(Vehicle):
-    def __init__(self,):
+    def __init__(self):
         super().__init__("Bus",seats=50)
+    
     def fare(self):
         base=super().fare()
         maintenance=0.10* base
         total=base+maintenance
         return total
 
-instance = Bus()
+instance = Car("sedan")
 FinalFare=instance.fare()
 
 print("Final Fare for",instance.vehicle,"is",FinalFare )
+

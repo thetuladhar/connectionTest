@@ -18,7 +18,7 @@ class Derived(Base1,Base2):
     def printStrs(self):
         print(self.str1,self.str2)
 
-print(Derived.__mro__)
+print(Derived.__mro__)#Python ues the MRO behind the scenes
 
 ob=Derived()
 ob.printStrs()
