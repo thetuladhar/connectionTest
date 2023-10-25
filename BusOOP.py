@@ -6,24 +6,9 @@ class Vehicle:
         return self.seats*100
 
 class Car(Vehicle):
-    def __init__(self,cartype,seats):
+    def __init__(self,cartype):
         print("Type is Car")
-        super().__init__(cartype,seats)
-
-class CityRide(Car):
-    def __init__(self,cityride,seats):
-        print("Type is CityRide")
-        super().__init__(cityride,seats=4)
-
-class OffRoad(Car):
-    def __init__(self,offroading):
-        print(offroading,"Type is Off Roader")
-        super().__init__(offroading,seats=6)
-
-class SUV(CityRide,OffRoad):
-    def __init__(self):
-        print("Vehicle is a SUV")
-        super().__init__('RangeRover')
+        super().__init__(cartype,seats=5)
 
 class Bus(Vehicle):
     def __init__(self):
@@ -35,7 +20,7 @@ class Bus(Vehicle):
         total=base+maintenance
         return total
 
-instance = Car("sedan")
+instance = Car("Sedan")
 FinalFare=instance.fare()
 
 print("Final Fare for",instance.vehicle,"is",FinalFare )
