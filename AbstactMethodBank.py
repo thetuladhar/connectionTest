@@ -50,7 +50,7 @@ savings=SavingsAccount(5000)
 savings.deposit(1000)
 savings.withdraw(2000)
 
-checking=CheckingAccount()
-checking.deposit(1700)
+checking=CheckingAccount(500)
+checking.deposit(1500)
 checking.withdraw(200)
 
