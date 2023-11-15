@@ -1,0 +1,54 @@
+<!-- tasks/templates/tasks.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Tracker</title>
+</head>
+<body>
+    <h2>Task List</h2>
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <a href="{% url 'task_detail' task.id %}">{{ task.title }}</a> -
+                Due Date: {{ task.due_date }} - Status: {{ task.status }}
+                <br>
+                Description: {{ task.description }}
+                <br>
+                <!-- Update Status Form -->
+                <form method="post" action="{% url 'update_task_status' task.id %}" style="display: inline-block;">
+                    {% csrf_token %}
+                    <select name="status">
+                        <option value="To Do" {% if task.status == "To Do" %}selected{% endif %}>To Do</option>
+                        <option value="In Progress" {% if task.status == "In Progress" %}selected{% endif %}>In Progress</option>
+                        <option value="Completed" {% if task.status == "Completed" %}selected{% endif %}>Completed</option>
+                    </select>
+                    <button type="submit">Update Status</button>
+                </form>
+               
+                <!-- Edit and Delete Links -->
+                [<a href="{% url 'task_update' task.id %}">Edit</a>]
+                [<a href="{% url 'task_delete' task.id %}">Delete</a>]
+                <hr>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Create or Update Task</h2>
+    <form method="post" action="{% if form.instance.pk %}{% url 'task_update' form.instance.pk %}{% else %}{% url 'task_create' %}{% endif %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Task</button>
+    </form>
+
+    <!-- Delete Task Form -->
+    {% if form.instance.pk %}
+        <h2>Delete Task</h2>
+        <p>Are you sure you want to delete "{{ form.instance.title }}"?</p>
+        <form method="post" action="{% url 'task_delete' form.instance.pk %}">
+            {% csrf_token %}
+            <button type="submit">Confirm Delete</button>
+        </form>
+    {% endif %}
+</body>
+</html>
