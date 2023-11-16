@@ -1,7 +1,0 @@
-<h1>This is a restricted page only accesible to logged in users</h1>
-
-<!-- logout feature -->
-<form method="post" action="{% url 'logout' %}">
-    {% csrf_token %}
-    <button type="submit">Logout</button>
-  </form>
