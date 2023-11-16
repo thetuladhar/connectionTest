@@ -1,17 +1,17 @@
 #initializing Inventory
 InitialInventory={
-    "Water":100,
-    "Milk":50,
-    "Coffee":76,
+    "Water":200,
+    "Milk":500,
+    "Coffee":50,
     "Money":2.5
 }
 #initializing Inventory
 #inventory = InitialInventory
 
 #MENU ITEMS BY PRICE AND QUANTITY
-latte={"Water":250,"Milk":55,"Coffee":77,"Price":1.5}
-espresso={"Water":50,"Milk":0,"Coffee":9,"Price":1.5}
-cappuccino={"Water":70,"Milk":10,"Coffee":20,"Price":1.0}
+latte={"Water":0,"Milk":240,"Coffee":10,"Price":1.5}
+espresso={"Water":30,"Milk":0,"Coffee":10,"Price":1.5}
+cappuccino={"Water":60,"Milk":120,"Coffee":10,"Price":1.0}
 
 def report():
     print("---CURRENT RESOURCES---")
@@ -30,13 +30,18 @@ def coinProgram():
     return round(calc,2)
 
 def checkResource(item):
+    switch="on"
     if item["Water"]> inventory["Water"]:
         print("Sorry there is NOT enough Water.")
-        if item["Milk"]> inventory["Milk"]:
-            print("Sorry there is NOT enough Milk.")
-            if item["Coffee"]> inventory["Coffee"]:
-                print("Sorry there is NOT enough Coffee.")
-    else:
+        switch="off"
+    if item["Milk"]> inventory["Milk"]:
+        print("Sorry there is NOT enough Milk.")
+        switch="off"
+    if item["Coffee"]> inventory["Coffee"]:
+        print("Sorry there is NOT enough Coffee.")
+        switch="off"
+
+    if switch=="on":
         transaction(item)
     
 

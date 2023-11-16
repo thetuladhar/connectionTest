@@ -1,0 +1,36 @@
+<div class="col-md-9">
+  <hr>
+  <h3>{{ user.username }}'s Profile</h3>
+  
+  {% if profile.profile_picture %}
+  <img src="{{ profile.profile_picture.url }}" alt="{{ user.username }}'s Profile Picture" class="img-thumbnail" style="max-width: 15%;">
+  {% else %}
+    <img src="" alt="{{ user.username }}'s Default Profile Picture" class="img-thumbnail" style="max-width: 15%;">
+  {% endif %}
+  
+  {% if profile.bio %}
+      <p><strong>Bio:</strong> {{ profile.bio }}</p>
+  {% endif %}
+  
+  {% if profile.location %}
+      <p><strong>Location:</strong> {{ profile.location }}</p>
+  {% endif %}
+
+  {% if request.user == profile.user %}
+      <hr>
+      <h4>Update Profile Picture and Bio</h4>
+      <!-- Display the form only if the logged-in user is the owner of the profile -->
+      <form method="post" action="{% url 'user_profile' user.username %}" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ profile_form.as_p }}
+          <button type="submit" class="btn btn-primary mt-2">Save Profile</button>
+      </form>
+      
+  {% endif %}
+  
+  <!-- Back button to the homepage -->
+  <hr>
+  <form method="get" action="{% url 'images' %}">
+      <button type="submit">Back to Gallery</button>
+  </form>
+</div>
